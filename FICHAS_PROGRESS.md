@@ -80,3 +80,9 @@ Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobado
 - Repo público: https://github.com/patriciocampodonico/darwin-en-la-argentina-fichas (carpeta FICHAS, sin salida/ ni referencias/).
 - Página (GitHub Pages, rama main): https://patriciocampodonico.github.io/darwin-en-la-argentina-fichas/ — muestra index.html: cada ficha de a dos (frente y dorso), con aire entre una ficha y la siguiente.
 - Después de cada cambio: node build.mjs → git add -A → git commit → git push. La página se actualiza sola en 1–2 minutos.
+
+## Mockup para la página 007 del libro (12 oct. 2026)
+- Generado por Patricio en ChatGPT en dos pasos: el primero mostraba tres veces el Megatherium; el segundo (referencias/mockup-007-v2) muestra tres fichas distintas: frente 11 Megatherium, frente 22 Guanaco y dorso 16 (parada 09).
+- Original: assets/mockup/mockup-fichas.webp. Recorte del fondo gris con tools/mockup.py → assets/mockup/007-mockup-fichas.png (1509 × 836 px, fondo transparente). La zona del guanaco se marca a mano porque su azul grisáceo se confunde con el fondo.
+- Diferencia con la ficha real: en el mockup ChatGPT escribió «así» con tilde en el Megatherium (la ficha dice «asi», como la fuente). A 60 mm de ancho no se lee.
+- FALTA: colocarlo en LIBRO/book/pages/007.html (reemplaza el esquema de líneas de «Fichas de campo»). La 007 está aprobada y bloqueada: se necesita el OK de Patricio.
