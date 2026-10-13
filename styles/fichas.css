@@ -1,0 +1,148 @@
+/* Fichas de campo · A7 vertical, 74 × 105 mm, sangrado 3 mm.
+   Mismo sistema que el libro (LIBRO/book/styles/tokens.css): dos tintas, tres familias, línea de base.
+   La línea de base es de 3,75 mm: 28 líneas exactas en los 105 mm, como las 28 del libro. */
+@font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 400 900; src: url('../assets/fonts/PlayfairDisplay.ttf') format('truetype'); }
+@font-face { font-family: 'Playfair Display'; font-style: italic; font-weight: 400 900; src: url('../assets/fonts/PlayfairDisplay-Italic.ttf') format('truetype'); }
+@font-face { font-family: 'Lora'; font-style: normal; font-weight: 400 700; src: url('../assets/fonts/Lora.ttf') format('truetype'); }
+@font-face { font-family: 'Lora'; font-style: italic; font-weight: 400 700; src: url('../assets/fonts/Lora-Italic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; src: url('../assets/fonts/Inter.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: italic; font-weight: 100 900; src: url('../assets/fonts/Inter-Italic.ttf') format('truetype'); }
+
+:root {
+  --w: 74mm; --h: 105mm; --bleed: 3mm;
+  --margin: 5mm;
+  --baseline: 3.75mm;
+  --blue-deep: #1A3A5C; --blue-80: #48617D; --blue-60: #76899D; --blue-40: #A3B0BE; --blue-20: #D1D8DE;
+  --paper: #EFEEE6;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-reading: 'Lora', Georgia, serif;
+  --font-ui: 'Inter', Arial, sans-serif;
+  --rule-fine: 0.25mm;
+}
+
+/* ── La cara: 80 × 111 mm con el sangrado; la caja de corte queda 3 mm adentro ── */
+.cara {
+  position: relative; flex: none; box-sizing: border-box;
+  width: calc(var(--w) + 2 * var(--bleed)); height: calc(var(--h) + 2 * var(--bleed));
+  padding: var(--bleed);
+  background: var(--paper); color: var(--blue-deep);
+  font-family: var(--font-ui); font-kerning: normal; font-synthesis: none; text-rendering: geometricPrecision;
+}
+.cara--reverso { background: var(--blue-deep); color: var(--paper); }
+.cara p, .cara h1, .cara h2 { margin: 0; font-weight: 400; }
+.caja {
+  width: var(--w); height: var(--h); box-sizing: border-box; padding: 0 var(--margin);
+  display: grid; grid-template-columns: 1fr; grid-template-rows: repeat(28, var(--baseline));
+}
+
+/* ── Componentes del libro ── */
+.cut { color: var(--blue-60); }
+.nowrap { white-space: nowrap; }
+.notetag {
+  display: inline-block; min-width: 3mm; margin-right: 1mm; padding: 0 0.6mm;
+  font-family: var(--font-ui); font-size: 5.5pt; font-weight: 700; line-height: 3mm; text-align: center;
+  box-shadow: inset 0 0 0 var(--rule-fine) var(--paper); color: var(--paper);
+}
+.notetag--ed { background: var(--paper); color: var(--blue-deep); }
+.minitile { width: var(--baseline); height: var(--baseline); background: var(--blue-deep); flex: none; display: block; }
+.tile__fill { fill: var(--paper); } .tile__line { fill: none; stroke: var(--paper); stroke-width: 0.9; } .tile__cut { fill: none; stroke: var(--blue-deep); stroke-width: 0.7; }
+.marca { fill: none; stroke: currentColor; stroke-width: 0.25; display: block; }
+.marca .marca__punto { fill: currentColor; stroke: none; }
+
+/* ══ ANVERSO ══ franja de imagen (11 líneas) · texto de Darwin (13) · metadata (4) */
+.a-imagen {
+  position: absolute; left: 0; right: 0; top: 0; height: calc(var(--bleed) + var(--baseline) * 11);
+  background: center / cover no-repeat;
+}
+/* Lámina: el dibujo entero sobre papel, apoyado en un filete */
+.a-imagen--lamina { box-sizing: border-box; padding: calc(var(--bleed) + 3.6mm) calc(var(--bleed) + var(--margin)) 2.4mm; background-origin: content-box; background-size: contain; background-position: center bottom; }
+.a-imagen--lamina::after {
+  content: ''; position: absolute; left: calc(var(--bleed) + var(--margin)); right: calc(var(--bleed) + var(--margin)); bottom: 0;
+  border-bottom: var(--rule-fine) solid var(--blue-deep);
+}
+.a-kicker {
+  grid-row: 13; display: flex; align-items: center; gap: 1.6mm;
+  font-size: 6pt; font-weight: 600; line-height: var(--baseline);
+}
+.a-kicker span:last-child { margin-left: auto; font-weight: 500; font-variant-numeric: tabular-nums; }
+.a-kicker b { font-weight: 700; }
+.a-titulo { grid-row: 14 / 16; font-family: var(--font-display); font-size: 17pt; line-height: calc(var(--baseline) * 2); letter-spacing: -0.005em; padding-top: 0.5mm; white-space: nowrap; }
+.a-titulo--cursiva { font-style: italic; }
+.a-darwin {
+  grid-row: 17 / 25;
+  font-family: var(--font-reading); font-size: 8pt; line-height: var(--baseline);
+  text-align: justify; text-align-last: left; hyphens: manual;
+}
+.a-meta {
+  grid-row: 25 / 29; display: grid; grid-template-columns: 20.5mm 1fr 14mm; column-gap: 2mm; align-content: start;
+  margin-top: calc(var(--baseline) * 0.5); padding-top: 1.2mm;
+  background: linear-gradient(var(--blue-deep), var(--blue-deep)) top / 100% var(--rule-fine) no-repeat;
+}
+.a-meta dt, .r-dato dt { font-size: 5pt; font-weight: 500; line-height: 2.5mm; color: var(--blue-60); }
+.a-meta dd, .r-dato dd { margin: 0; font-size: 6pt; font-weight: 500; line-height: 2.75mm; }
+.a-meta dd b { font-weight: 700; }
+dl { margin: 0; }
+
+/* ══ REVERSO ══ azul pleno: encabezado · mapa y parada · nota editorial · puente con el libro y la web */
+.r-cabeza { grid-row: 2 / 4; display: flex; align-items: center; gap: 2mm; }
+.r-cabeza .marca { width: 6mm; height: 6mm; }
+.r-cabeza h2 { font-family: var(--font-display); font-size: 9.5pt; line-height: var(--baseline); }
+.r-cabeza p { font-size: 6pt; font-weight: 500; line-height: var(--baseline); }
+.r-cabeza .r-num { margin-left: auto; align-self: flex-start; font-size: 6pt; font-weight: 500; line-height: var(--baseline); font-variant-numeric: tabular-nums; }
+.r-cabeza .r-num b { font-weight: 700; }
+.r-filete { grid-row: 4; align-self: center; border-top: var(--rule-fine) solid var(--paper); }
+
+.r-cuerpo { grid-row: 5 / 16; display: grid; grid-template-columns: 20.8mm 1fr; column-gap: 4mm; }
+.r-mapa { width: 20.8mm; height: 39mm; display: block; }
+.m-tierra { fill: var(--paper); fill-opacity: 0.2; }
+.m-otro { fill: var(--paper); fill-opacity: 0.07; }
+.m-costa { fill: none; stroke: var(--paper); stroke-opacity: 0.55; stroke-width: 0.12; stroke-linejoin: round; }
+.m-ruta { fill: none; stroke: var(--paper); stroke-width: 0.28; stroke-linecap: round; stroke-linejoin: round; }
+.m-ruta--agua { stroke-dasharray: 0.7 0.7; }
+.m-parada { fill: var(--paper); }
+.m-aqui { fill: var(--paper); stroke: var(--blue-deep); stroke-width: 0.3; }
+.m-anillo { fill: none; stroke: var(--paper); stroke-width: 0.25; }
+.m-rotulo { font-family: var(--font-ui); font-size: 2.6px; font-weight: 700; fill: var(--paper); }
+
+.r-parada { display: flex; flex-direction: column; }
+.r-parada .r-rotulo { font-size: 5pt; font-weight: 500; line-height: var(--baseline); color: var(--blue-40); }
+.r-parada .r-numero { font-family: var(--font-ui); font-size: 20pt; font-weight: 700; line-height: calc(var(--baseline) * 2); letter-spacing: -0.02em; }
+.r-parada h1 { font-family: var(--font-display); font-size: 10pt; line-height: calc(var(--baseline) * 1.2); margin: calc(var(--baseline) * 0.2) 0 calc(var(--baseline) * 0.7); }
+.r-dato { display: grid; row-gap: calc(var(--baseline) * 0.5); }
+.r-dato dt { color: var(--blue-40); }
+
+.r-notas { grid-row: 16 / 23; display: flex; flex-direction: column; gap: calc(var(--baseline) * 0.5); }
+.r-notas p { font-size: 6.25pt; line-height: 2.8125mm; padding-left: 5.2mm; text-indent: -5.2mm; }
+.r-notas .notetag { text-indent: 0; }
+
+.r-pie {
+  grid-row: 23 / 29; display: grid; grid-template-columns: 1fr auto; column-gap: 3mm; align-content: start; align-items: start;
+  padding-top: 1.5mm;
+  background: linear-gradient(var(--paper), var(--paper)) top / 100% var(--rule-fine) no-repeat;
+}
+.r-pie .r-dato { row-gap: calc(var(--baseline) * 0.35); }
+
+.r-qr { width: 17mm; height: 17mm; display: block; }  /* 17 mm: módulos de 0,41 mm, se lee con el teléfono */
+
+/* ── Recorte al tamaño final (pantalla y PDF de pantalla) ── */
+html, body { margin: 0; padding: 0; }
+.recorte { width: var(--w); height: var(--h); overflow: hidden; }
+.recorte > .cara { margin: calc(-1 * var(--bleed)); }
+* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+/* ── Pantalla: anverso y reverso lado a lado ── */
+@media screen {
+  /* Cada ficha se ve de a dos (frente y dorso, casi pegados); entre una ficha y la siguiente hay más aire */
+  body { background: #8f9499; padding: 10mm 8mm 16mm; display: flex; flex-flow: row wrap; justify-content: center; align-items: flex-start; gap: 16mm 18mm; }
+  .par { display: flex; gap: 3mm; }
+  .titulo-sitio { flex: 0 0 100%; margin: 0 0 -4mm; text-align: center; color: var(--paper); font: 500 8pt var(--font-ui); }
+  .titulo-sitio b { display: block; font: 400 20pt var(--font-display); margin-bottom: 1.5mm; }
+  body.single .titulo-sitio, body.hoja .titulo-sitio { display: none; }
+  body.single .par { gap: 8mm; }
+  .recorte { box-shadow: 0 1.5mm 6mm rgba(0, 0, 0, .28); }
+  body.hoja { padding: 8mm; display: grid; grid-template-columns: repeat(3, auto); gap: 6mm; justify-content: start; }
+  .desborda { outline: 0.6mm solid #e23; }
+  body.single { padding: 8mm; }
+  body.single .par:not(.is-target) { display: none; }
+  body.guias .caja { background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--baseline) - 0.1mm), rgba(230, 60, 60, .45) calc(var(--baseline) - 0.1mm), rgba(230, 60, 60, .45) var(--baseline)); }
+}
