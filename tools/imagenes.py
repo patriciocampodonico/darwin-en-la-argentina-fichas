@@ -45,6 +45,7 @@ FICHAS = [
     ('18', 'parana-rosario', '068', 'c', .5, .5),
     ('19', 'barranca', '070', 'c', .5, .45),
     ('20', 'diente-caballo', '076', 'l', .5, .5),
+    ('21', 'ciudad-sitiada', '21-ciudad-sitiada.webp', 'c', .5, .55),  # imagen nueva (ChatGPT, 12 oct. 2026): assets/originales/
     ('22', 'guanaco', '086', 'c', .5, .45),
     ('23', 'macrauchenia', '092', 'l', .5, .5),
     ('24', 'sirga', '096', 'c', .5, .55),
@@ -52,7 +53,8 @@ FICHAS = [
 
 hechas = []
 for num, name, src, mode, fx, fy in FICHAS:
-    f = DE_PAGINA[src] if src in DE_PAGINA else os.path.join(SRC, src)
+    propia = os.path.join(ROOT, 'assets', 'originales', src)  # imágenes hechas para las fichas
+    f = DE_PAGINA[src] if src in DE_PAGINA else propia if os.path.exists(propia) else os.path.join(SRC, src)
     im = Image.open(f).convert('L')
     w, h = im.size
     if mode == 'c':

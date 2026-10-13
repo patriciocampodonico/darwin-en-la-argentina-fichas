@@ -231,6 +231,16 @@ export const FICHAS = [
     ],
   },
   {
+    num: '21', parada: '12', categoria: 'Observación', titulo: 'La ciudad sitiada',
+    imagen: { archivo: '21-ciudad-sitiada.jpg', alt: 'Camino desierto hacia la ciudad; un viajero solo, a pie, y un piquete de soldados en un puente' },
+    darwin: `${C} si me avenía a dejar el guía y los caballos yo podría pasar, yendo solo, los puestos de los centinelas. ${C} El camino, por espacio de una legua, estaba enteramente desierto. Encontré un piquete de soldados, que se contentaron con echar una mirada a un antiguo pasaporte mío, y al fin, con no pequeña satisfacción, me vi dentro de la ciudad.`,
+    capitulo: 'VII', paginas: '082 y 083', fuente: ['083'],
+    notas: [
+      ['ED', '20 de octubre: Darwin desembarca en Las Conchas y se entera de que, por «una revolución violenta, todos los puertos habían sido embargados» (pág. 082).'],
+      ['ED', 'Lo dejan pasar cuando menciona «las obsequiosas atenciones recibidas del general Rosas» en el Colorado.'],
+    ],
+  },
+  {
     num: '22', parada: '13', categoria: 'Fauna', titulo: 'Guanaco',
     imagen: { archivo: '22-guanaco.jpg', alt: 'Guanaco de pie sobre la meseta, con un rebaño a lo lejos' },
     darwin: `El guanaco, o llama salvaje (3), es el cuadrúpedo característico de las llanuras de Patagonia; en Sudamérica representa el camello del Oriente. ${C} Generalmente vive en pequeños rebaños de 12 a 30 individuos; pero en las riberas de Santa Cruz vimos un rebaño que debía de contener lo menos 500.`,

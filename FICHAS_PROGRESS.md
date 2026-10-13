@@ -4,7 +4,7 @@ Tercera pieza del sistema «Darwin en la Argentina» (libro + mapa digital + fic
 
 Estados: propuesta / trabajando / revisión / APROBADA.
 
-Resumen (12 oct. 2026): 23 de 24 fichas en revisión · falta la 21 (sin imagen) · sistema y lista aprobados por Patricio.
+Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobados por Patricio · pendientes: vizcacha nueva (17) y mockup de la pág. 007.
 
 ## Sistema (aprobado por Patricio el 12 oct. 2026, con el QR agrandado)
 - Formato: A7 vertical, 74 × 105 mm, sangrado 3 mm (TP4). Línea de base de 3,75 mm = 28 líneas, como las 28 del libro. Márgenes laterales 5 mm.
@@ -48,7 +48,7 @@ Resumen (12 oct. 2026): 23 de 24 fichas en revisión · falta la 21 (sin imagen)
 | 18 | 09 | El Paraná en Rosario | Territorio | 068 | 068 | revisión |
 | 19 | 10 | El mastodonte | Fósil | 071 | 070 | revisión |
 | 20 | 11 | Diente de caballo | Fósil | 076–077 | 076 | revisión |
-| 21 | 12 | La ciudad sitiada | Observación | 082–083 | FALTA | pendiente |
+| 21 | 12 | La ciudad sitiada | Observación | 083 | assets/originales/21-ciudad-sitiada.webp (nueva) | revisión |
 | 22 | 13 | Guanaco | Fauna | 086 | 086 | revisión |
 | 23 | 14 | Macrauchenia | Fósil | 092 | 092 | revisión |
 | 24 | 15 | Contra la corriente | Observación | 096 | 096 | revisión |
@@ -68,7 +68,7 @@ Resumen (12 oct. 2026): 23 de 24 fichas en revisión · falta la 21 (sin imagen)
 - Falta el cotejo a la vista contra las páginas escaneadas (lo mismo que tiene pendiente el libro).
 
 ## Problemas abiertos
-- Ficha 21: sin imagen. Hasta que esté, el juego es de 23 y el último pliego de imprenta lleva 3 fichas.
+- Ficha 21: RESUELTO el 12 oct. 2026. Imagen generada por Patricio en ChatGPT con el prompt entregado (camino desierto, piquete en el puente, viajero solo, ciudad al fondo); original en assets/originales/, 488 ppp. Texto de la pág. 083, cotejado (cap. VII). El juego queda en 24: 6 pliegos completos.
 - Ficha 17: la vizcacha del libro parece un conejo (pendiente también en el libro).
 - La web tiene 9 puntos sin número; el libro y las fichas, 15 paradas numeradas. El QR lleva al mapa en general, no a una parada.
 - El «Cuaderno de campo» de la web tiene registros (ñandú, armadillos, hornero, zorrillo) cuyo texto no está en la selección v2: quedan fuera salvo que Patricio autorice ampliar la selección. El Toxodon tiene texto (pág. 039) pero no lámina en el libro.
