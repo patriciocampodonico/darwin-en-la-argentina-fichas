@@ -86,3 +86,10 @@ Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobado
 - Original: assets/mockup/mockup-fichas.webp. Recorte del fondo gris con tools/mockup.py → assets/mockup/007-mockup-fichas.png (1509 × 836 px, fondo transparente). La zona del guanaco se marca a mano porque su azul grisáceo se confunde con el fondo.
 - Diferencia con la ficha real: en el mockup ChatGPT escribió «así» con tilde en el Megatherium (la ficha dice «asi», como la fuente). A 60 mm de ancho no se lee.
 - FALTA: colocarlo en LIBRO/book/pages/007.html (reemplaza el esquema de líneas de «Fichas de campo»). La 007 está aprobada y bloqueada: se necesita el OK de Patricio.
+
+## Prueba de impresión (13 oct. 2026)
+- `node build.mjs prueba [números]` → salida/prueba-impresion-A4.pdf: UNA hoja A4 doble faz con 5 fichas (el máximo que entra con 3 mm de demasía por ficha): tres acostadas a la izquierda y dos de pie a la derecha. Página 1 frentes, página 2 dorsos espejados (doble faz, volteo por el borde largo; las acostadas giran al revés en el dorso).
+- Marcas de corte en cada esquina de cada ficha: un trazo dentro de la demasía (de 1 a 3 mm del corte, negro con halo blanco) que se alarga donde hay margen libre.
+- Fichas de la prueba: 11, 22, 21 (acostadas) y 01, 17 (de pie): una lámina sobre papel y una imagen a sangre de cada tipo.
+- Orden de corte sugerido: primero el corte vertical que separa las dos columnas, después cada columna por separado.
+- El PDF de imprenta completo (fichas-imprenta.pdf) sigue siendo de 4 por pliego, todas de pie.

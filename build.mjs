@@ -191,6 +191,44 @@ if (cmd === 'revisar') {
     run([`--screenshot=${out(`_bloque-${b}.png`)}`, '--window-size=1876,878', '--force-device-scale-factor=1.4', `${url('index.html')}?bloque=${b}`]);
   console.log('Hojas de revisión en salida/');
 }
+if (cmd === 'prueba') {
+  // Prueba de impresión: UNA hoja A4 doble faz con las fichas que entran (5): tres acostadas a la izquierda
+  // y dos de pie a la derecha, cada una con sus 3 mm de demasía y sus marcas de corte.
+  // Página 1 = frentes · página 2 = dorsos, espejados para imprimir a doble faz volteando por el borde largo.
+  // Uso: node build.mjs prueba 11,22,21,01,17
+  const elegidas = (arg || '11,22,21,01,17').split(',').map((n) => FICHAS.find((x) => x.num === n.trim())).filter(Boolean).slice(0, 5);
+  const BX = (210 - 191) / 2, BY = (297 - 240) / 2;
+  // puestos del frente: x, y, ancho y alto del puesto con demasía (mm) y giro de la ficha
+  const puestos = [0, 1, 2].map((i) => ({ x: BX, y: BY + i * 80, w: 111, h: 80, giro: 90 }))
+    .concat([0, 1].map((j) => ({ x: BX + 111, y: BY + 9 + j * 111, w: 80, h: 111, giro: 0 })));
+  const hoja = (lado) => {
+    const ps = puestos.map((p) => lado === 'frente' ? p : { ...p, x: 210 - p.x - p.w, giro: -p.giro });
+    const dentro = (x, y) => ps.some((p) => x > p.x && x < p.x + p.w && y > p.y && y < p.y + p.h);
+    // marcas: en cada esquina de corte, un trazo dentro de la demasía (de 1 a 3 mm del corte), que se alarga hasta 5 mm donde hay margen libre
+    const trazos = [];
+    for (const p of ps) {
+      const x0 = p.x + 3, x1 = p.x + p.w - 3, y0 = p.y + 3, y1 = p.y + p.h - 3;
+      for (const [x, y, dx, dy] of [[x0, y0, -1, 0], [x0, y0, 0, -1], [x1, y0, 1, 0], [x1, y0, 0, -1], [x0, y1, -1, 0], [x0, y1, 0, 1], [x1, y1, 1, 0], [x1, y1, 0, 1]]) {
+        const largo = dentro(x + dx * 4.5, y + dy * 4.5) ? 3 : 8;
+        trazos.push(`M${f(x + dx)} ${f(y + dy)}L${f(x + dx * largo)} ${f(y + dy * largo)}`);
+      }
+    }
+    const caras = ps.map((p, i) => {
+      const giro = p.giro === 90 ? 'transform:translateX(111mm) rotate(90deg);' : p.giro === -90 ? 'transform:translateY(80mm) rotate(-90deg);' : '';
+      return `<div class="puesto" style="left:${f(p.x)}mm;top:${f(p.y)}mm;width:${p.w}mm;height:${p.h}mm"><div class="giro" style="${giro}">${(lado === 'frente' ? anverso : reverso)(elegidas[i])}</div></div>`;
+    }).join('');
+    return `<div class="pliego">${caras}<svg class="marcas" viewBox="0 0 210 297" aria-hidden="true"><path class="marcas__halo" d="${trazos.join('')}"/><path d="${trazos.join('')}"/></svg>
+<p class="pliego__rotulo">Darwin en la Argentina · fichas de campo · prueba de impresión · ${lado} · fichas ${elegidas.map((x) => x.num).join(', ')} · A7 74 × 105 mm + 3 mm de demasía · imprimir al 100 %, doble faz, voltear por el borde largo</p></div>`;
+  };
+  writeFileSync(join(ROOT, 'prueba.html'), pagina(hoja('frente') + '\n' + hoja('dorso'), `<style>@page { size: 210mm 297mm; margin: 0; } body { display: block; padding: 0; background: none; }
+.pliego { position: relative; width: 210mm; height: 297mm; overflow: hidden; break-after: page; background: #fff; }
+.puesto { position: absolute; overflow: hidden; } .giro { transform-origin: 0 0; width: 80mm; height: 111mm; }
+.marcas { position: absolute; inset: 0; width: 210mm; height: 297mm; } .marcas path { fill: none; stroke: #000; stroke-width: 0.12; } .marcas .marcas__halo { stroke: #fff; stroke-width: 0.45; }
+.pliego__rotulo { position: absolute; left: ${BX}mm; right: ${BX}mm; top: ${BY + 247}mm; margin: 0; font: 500 6pt Inter, Arial, sans-serif; color: #000; }
+@media screen { body { background: #8f9499; } .pliego { margin: 8mm auto; } }</style>\n`));
+  run([`--print-to-pdf=${out('prueba-impresion-A4.pdf')}`, '--no-pdf-header-footer', url('prueba.html')]);
+  console.log(`Prueba de impresión: fichas ${elegidas.map((x) => x.num).join(', ')} → salida/prueba-impresion-A4.pdf`);
+}
 if (cmd === 'pdf') {
   run([`--print-to-pdf=${out('fichas-pantalla.pdf')}`, '--no-pdf-header-footer', url('pantalla.html')]);
   run([`--print-to-pdf=${out('fichas-imprenta.pdf')}`, '--no-pdf-header-footer', url('imprenta.html')]);
