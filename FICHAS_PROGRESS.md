@@ -75,3 +75,8 @@ Resumen (12 oct. 2026): 23 de 24 fichas en revisión · falta la 21 (sin imagen)
 - El PDF de Chrome sale de 74,1 × 105,2 mm y el A4 de 209,9 × 297 mm (redondeo a píxel, igual que en el libro).
 - Color: los PDF están en RGB. Falta definir la conversión del azul para imprenta (pendiente también en el libro).
 - Mockup para la página 007 del libro: prompt y referencias entregados (referencias/); falta generarlo.
+
+## Publicación en GitHub (12 oct. 2026)
+- Repo público: https://github.com/patriciocampodonico/darwin-en-la-argentina-fichas (carpeta FICHAS, sin salida/ ni referencias/).
+- Página (GitHub Pages, rama main): https://patriciocampodonico.github.io/darwin-en-la-argentina-fichas/ — muestra index.html: cada ficha de a dos (frente y dorso), con aire entre una ficha y la siguiente.
+- Después de cada cambio: node build.mjs → git add -A → git commit → git push. La página se actualiza sola en 1–2 minutos.
