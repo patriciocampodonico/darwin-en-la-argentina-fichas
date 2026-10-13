@@ -41,7 +41,7 @@ FICHAS = [
     ('14', 'fogon', '053', 'c', .5, .52),
     ('15', 'cuadricula', '060-afueras.webp', 'l', .5, .5),
     ('16', 'cardal', '065', 'c', .5, .3),
-    ('17', 'vizcacha', '066', 'l', .5, .5),
+    ('17', 'vizcacha', '17-vizcacha.webp', 'l', .5, .5),  # imagen nueva (ChatGPT, 12 oct. 2026): reemplaza la del libro, que parecía un conejo
     ('18', 'parana-rosario', '068', 'c', .5, .5),
     ('19', 'barranca', '070', 'c', .5, .45),
     ('20', 'diente-caballo', '076', 'l', .5, .5),

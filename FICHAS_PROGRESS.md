@@ -4,7 +4,7 @@ Tercera pieza del sistema «Darwin en la Argentina» (libro + mapa digital + fic
 
 Estados: propuesta / trabajando / revisión / APROBADA.
 
-Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobados por Patricio · pendientes: vizcacha nueva (17) y mockup de la pág. 007.
+Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobados por Patricio · pendiente: mockup de la pág. 007.
 
 ## Sistema (aprobado por Patricio el 12 oct. 2026, con el QR agrandado)
 - Formato: A7 vertical, 74 × 105 mm, sangrado 3 mm (TP4). Línea de base de 3,75 mm = 28 líneas, como las 28 del libro. Márgenes laterales 5 mm.
@@ -44,7 +44,7 @@ Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobado
 | 14 | 07 | El fogón | Observación | 053 | 053 | revisión |
 | 15 | 08 | La cuadrícula | Territorio | 061 | 060-afueras | revisión |
 | 16 | 09 | Cardos gigantes | Flora | 065 | 065 | revisión |
-| 17 | 09 | Vizcacha | Fauna | 066 | 066 (parece un conejo) | revisión |
+| 17 | 09 | Vizcacha | Fauna | 066 | assets/originales/17-vizcacha.webp (nueva) | revisión |
 | 18 | 09 | El Paraná en Rosario | Territorio | 068 | 068 | revisión |
 | 19 | 10 | El mastodonte | Fósil | 071 | 070 | revisión |
 | 20 | 11 | Diente de caballo | Fósil | 076–077 | 076 | revisión |
@@ -69,7 +69,7 @@ Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobado
 
 ## Problemas abiertos
 - Ficha 21: RESUELTO el 12 oct. 2026. Imagen generada por Patricio en ChatGPT con el prompt entregado (camino desierto, piquete en el puente, viajero solo, ciudad al fondo); original en assets/originales/, 488 ppp. Texto de la pág. 083, cotejado (cap. VII). El juego queda en 24: 6 pliegos completos.
-- Ficha 17: la vizcacha del libro parece un conejo (pendiente también en el libro).
+- Ficha 17: RESUELTO el 12 oct. 2026. Vizcacha nueva generada por Patricio en ChatGPT (orejas cortas, franjas en la cara, bigotes largos); original en assets/originales/, 595 ppp. La página 066 del LIBRO sigue con la imagen vieja: se puede reemplazar con esta si Patricio lo autoriza.
 - La web tiene 9 puntos sin número; el libro y las fichas, 15 paradas numeradas. El QR lleva al mapa en general, no a una parada.
 - El «Cuaderno de campo» de la web tiene registros (ñandú, armadillos, hornero, zorrillo) cuyo texto no está en la selección v2: quedan fuera salvo que Patricio autorice ampliar la selección. El Toxodon tiene texto (pág. 039) pero no lámina en el libro.
 - El PDF de Chrome sale de 74,1 × 105,2 mm y el A4 de 209,9 × 297 mm (redondeo a píxel, igual que en el libro).
