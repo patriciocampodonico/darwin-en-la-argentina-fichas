@@ -105,3 +105,4 @@ Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobado
 - El pie del dorso (En el libro · Diario) pasa a la misma altura y columnas que los datos del frente (filas 25–28, filete arriba). Las notas ganan filas (16–24). Nada desborda.
 - 20 oct. 2026 · Dorso: las notas (citas E, D y ED) van centradas en alto entre el mapa y el pie (pedido de Patricio). Nada desborda.
 - 20 oct. 2026 · Dorso: el bloque del mapa y la parada baja un renglón (filas 5–16 con un renglón de aire bajo el filete); las notas pasan a las filas 17–24, centradas. Nada desborda.
+- 20 oct. 2026 · Dorso: el nombre de la parada pasa de Playfair Display 10 pt a Inter semibold 8,5 pt (corrección de la profesora: los trazos finos de la Playfair se pierden impresos en tamaño chico). Nada desborda.

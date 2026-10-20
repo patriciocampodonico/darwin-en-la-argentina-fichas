@@ -107,7 +107,7 @@ dl { margin: 0; }
 .r-parada { display: flex; flex-direction: column; }
 .r-parada .r-rotulo { font-size: 5pt; font-weight: 500; line-height: var(--baseline); color: var(--blue-40); }
 .r-parada .r-numero { font-family: var(--font-ui); font-size: 20pt; font-weight: 700; line-height: calc(var(--baseline) * 2); letter-spacing: -0.02em; }
-.r-parada h1 { font-family: var(--font-display); font-size: 10pt; line-height: calc(var(--baseline) * 1.2); margin: calc(var(--baseline) * 0.2) 0 calc(var(--baseline) * 0.7); }
+.r-parada h1 { font-family: var(--font-ui); font-size: 8.5pt; font-weight: 600; letter-spacing: -0.01em;  /* Inter: la Playfair chica pierde los trazos finos al imprimir */ line-height: calc(var(--baseline) * 1.2); margin: calc(var(--baseline) * 0.2) 0 calc(var(--baseline) * 0.7); }
 .r-dato { display: grid; row-gap: calc(var(--baseline) * 0.5); }
 .r-dato dt { color: var(--blue-40); }
 
