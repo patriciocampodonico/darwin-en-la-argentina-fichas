@@ -100,9 +100,7 @@ function reverso(x) {
       <dl class="r-dato">
         <div><dt>En el libro</dt><dd>${/^\d{3}$/.test(x.paginas) ? 'Pág.' : 'Págs.'} ${x.paginas}</dd></div>
         <div><dt>Diario, edición de 1921</dt><dd>Capítulo ${x.capitulo}</dd></div>
-        <div><dt>Mapa digital</dt><dd>Escaneá el código</dd></div>
       </dl>
-      <img class="r-qr" src="assets/images/qr-mapa-digital.svg" alt="Código QR: enlace al mapa digital">
     </div>
   </div>
 </section>`;

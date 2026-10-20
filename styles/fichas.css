@@ -111,18 +111,16 @@ dl { margin: 0; }
 .r-dato { display: grid; row-gap: calc(var(--baseline) * 0.5); }
 .r-dato dt { color: var(--blue-40); }
 
-.r-notas { grid-row: 16 / 23; display: flex; flex-direction: column; gap: calc(var(--baseline) * 0.5); }
+.r-notas { grid-row: 16 / 25; display: flex; flex-direction: column; gap: calc(var(--baseline) * 0.5); }
 .r-notas p { font-size: 6.25pt; line-height: 2.8125mm; padding-left: 5.2mm; text-indent: -5.2mm; }
 .r-notas .notetag { text-indent: 0; }
 
 .r-pie {
-  grid-row: 23 / 29; display: grid; grid-template-columns: 1fr auto; column-gap: 3mm; align-content: start; align-items: start;
-  padding-top: 1.5mm;
+  grid-row: 25 / 29; align-self: start;  /* misma altura que los datos del frente */
+  margin-top: calc(var(--baseline) * 0.5); padding-top: 1.2mm;
   background: linear-gradient(var(--paper), var(--paper)) top / 100% var(--rule-fine) no-repeat;
 }
-.r-pie .r-dato { row-gap: calc(var(--baseline) * 0.35); }
-
-.r-qr { width: 17mm; height: 17mm; display: block; }  /* 17 mm: módulos de 0,41 mm, se lee con el teléfono */
+.r-pie .r-dato { grid-template-columns: 20.5mm 1fr; column-gap: 2mm; }  /* sin QR (va en la caja contenedora): los dos datos lado a lado, al pie */
 
 /* ── Recorte al tamaño final (pantalla y PDF de pantalla) ── */
 html, body { margin: 0; padding: 0; }
