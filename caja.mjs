@@ -1,4 +1,4 @@
-// Caja contenedora de las 24 fichas: estuche de solapas (tuck end) para el mazo de 74 × 105 mm.
+﻿// Caja contenedora de las 24 fichas: estuche de solapas (tuck end) para el mazo de 74 × 105 mm.
 //   node caja.mjs        arma caja.html (A4: troquel con el arte) y salida/caja-imprenta.pdf + salida/caja.png
 // Medidas interiores: 76 × 107 × 11 mm (1 mm de holgura por lado; 24 fichas de cartulina de 300 g ≈ 8,5 mm).
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
@@ -240,7 +240,7 @@ if (cmd !== 'html') {
   // Captura de la hoja guía a 3 px por mm
   run(['--force-device-scale-factor=3.78', '--window-size=794,1123', `--screenshot=${join(ROOT, 'salida', 'caja.png')}`, url]);
   const urlP = pathToFileURL(join(ROOT, 'caja-preentrega.html')).href;
-  run([`--print-to-pdf=${join(ROOT, 'salida', 'caja-preentrega.pdf')}`, '--no-pdf-header-footer', urlP]);
+  run([`--print-to-pdf=${join(ROOT, 'salida', 'caja-preentrega-A4.pdf')}`, '--no-pdf-header-footer', urlP]);
   run(['--force-device-scale-factor=3.78', '--window-size=794,1123', `--screenshot=${join(ROOT, 'salida', 'caja-preentrega.png')}`, urlP]);
   console.log('PDF y captura en salida/');
 }
