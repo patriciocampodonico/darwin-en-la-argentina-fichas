@@ -106,3 +106,9 @@ Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobado
 - 20 oct. 2026 · Dorso: las notas (citas E, D y ED) van centradas en alto entre el mapa y el pie (pedido de Patricio). Nada desborda.
 - 20 oct. 2026 · Dorso: el bloque del mapa y la parada baja un renglón (filas 5–16 con un renglón de aire bajo el filete); las notas pasan a las filas 17–24, centradas. Nada desborda.
 - 20 oct. 2026 · Dorso: el nombre de la parada pasa de Playfair Display 10 pt a Inter semibold 8,5 pt (corrección de la profesora: los trazos finos de la Playfair se pierden impresos en tamaño chico). Nada desborda.
+
+## 20 oct. 2026 — Caja contenedora
+- caja.mjs arma caja.html y salida/caja-imprenta.pdf (A4, 2 hojas: guía con troquel magenta y versión para imprenta con marcas de corte y de pliegue) + salida/caja.png.
+- Estuche con solapas (tuck end) de una pieza: frente · lomo · dorso · lateral · solapa de pegado. Interior 76 × 107 × 11 mm (1 mm de holgura por lado; 24 fichas de 300 g ≈ 8,5 mm). Troquel 183 × 157 mm, sangrado 3 mm. Tapa en el dorso con lengüeta, fondo en el frente; media luna en el frente para sacar la tapa.
+- Frente: la tapa del libro en vertical (grabado de San Julián, marca, Charles Darwin, título en Playfair, «Fichas de campo» en cursiva, línea de las 15 paradas). Dorso en papel como la contratapa: texto editorial en Inter, cantidad de fichas por tipo, código de notas D/E/ED, QR del mapa digital (pedido de Patricio), créditos. Lomo y lateral en Inter (la Playfair chica se pierde impresa).
+- Pendiente: el QR apunta al link actual de la web; cuando la web se mude a la organización de GitHub hay que regenerarlo (también en las otras piezas que lo usen).
