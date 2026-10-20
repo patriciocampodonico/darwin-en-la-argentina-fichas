@@ -93,3 +93,9 @@ Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobado
 - Fichas de la prueba: 11, 22, 21 (acostadas) y 01, 17 (de pie): una lámina sobre papel y una imagen a sangre de cada tipo.
 - Orden de corte sugerido: primero el corte vertical que separa las dos columnas, después cada columna por separado.
 - El PDF de imprenta completo (fichas-imprenta.pdf) sigue siendo de 4 por pliego, todas de pie.
+
+## 20 oct. 2026 — Macrauchenia nueva y páginas del libro −2
+- Ficha 23: nueva ilustración de ChatGPT (medio esqueleto semienterrado en el légamo, sin cráneo), la misma que el libro puso en la 090. Original en assets/originales/23-macrauchenia.webp; modo lámina.
+- El libro se renumeró −2 el 14 oct. (BOOK_PROGRESS). Corregidas todas las páginas citadas en las fichas (paginas, fuente y «pág.» de las notas ED) y los códigos de imagen de tools/imagenes.py. Cotejo: todo coincide con el libro. Nada desborda. Las imágenes de las demás fichas no cambiaron.
+- El mockup de las fichas ya está en el libro como 005-mockup-fichas.webp (la antigua 007).
+- PDFs de pantalla, imprenta y prueba regenerados.
