@@ -92,7 +92,7 @@ dl { margin: 0; }
 .r-cabeza .r-num b { font-weight: 700; }
 .r-filete { grid-row: 4; align-self: center; border-top: var(--rule-fine) solid var(--paper); }
 
-.r-cuerpo { grid-row: 5 / 16; display: grid; grid-template-columns: 20.8mm 1fr; column-gap: 4mm; }
+.r-cuerpo { grid-row: 5 / 17; padding-top: var(--baseline);  /* un renglón de aire bajo el filete */ display: grid; grid-template-columns: 20.8mm 1fr; column-gap: 4mm; }
 .r-mapa { width: 20.8mm; height: 39mm; display: block; }
 .m-tierra { fill: var(--paper); fill-opacity: 0.2; }
 .m-otro { fill: var(--paper); fill-opacity: 0.07; }
@@ -111,7 +111,7 @@ dl { margin: 0; }
 .r-dato { display: grid; row-gap: calc(var(--baseline) * 0.5); }
 .r-dato dt { color: var(--blue-40); }
 
-.r-notas { grid-row: 16 / 25; display: flex; flex-direction: column; justify-content: center;  /* centradas entre el mapa y el pie */ gap: calc(var(--baseline) * 0.5); }
+.r-notas { grid-row: 17 / 25; display: flex; flex-direction: column; justify-content: center;  /* centradas entre el mapa y el pie */ gap: calc(var(--baseline) * 0.5); }
 .r-notas p { font-size: 6.25pt; line-height: 2.8125mm; padding-left: 5.2mm; text-indent: -5.2mm; }
 .r-notas .notetag { text-indent: 0; }
 
