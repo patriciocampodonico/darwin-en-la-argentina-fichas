@@ -119,3 +119,5 @@ Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobado
 ## 20 oct. 2026 — PDF doble faz A3 para cortar rápido
 - imprenta-A3.html → salida/fichas-doble-faz-A3.pdf: 3 pliegos A3 (6 páginas: frentes, dorsos), 9 fichas por pliego (3 × 3; el último con 6). Elegido A3 frente a A4 (4 por hoja → 6 pliegos): la mitad de hojas y de cortes.
 - Frentes al corte exacto, sin demasía, con un rectángulo negro de 0,3 mm por fuera del borde de corte (pedido de Patricio). Dorsos con 3 mm de demasía, sin rectángulo, espejados para doble faz volteando por el lado largo. 6 mm entre fichas.
+
+- 20 oct. 2026 · A3 doble faz: se quita el rectángulo negro de los frentes; quedan a sangre al corte exacto, sin demasía. Dorsos sin cambios (3 mm de demasía, espejados).
