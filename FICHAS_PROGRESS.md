@@ -103,3 +103,4 @@ Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobado
 ## 20 oct. 2026 — Dorso sin QR
 - Pedido de Patricio: se quita el QR del mapa digital (y el dato «Mapa digital · Escaneá el código») del dorso de las 24 fichas; el QR va en la caja contenedora. El link a la web en su lugar queda pendiente (Patricio está por mudar la web a una organización de GitHub para que el link no lleve su nombre).
 - El pie del dorso (En el libro · Diario) pasa a la misma altura y columnas que los datos del frente (filas 25–28, filete arriba). Las notas ganan filas (16–24). Nada desborda.
+- 20 oct. 2026 · Dorso: las notas (citas E, D y ED) van centradas en alto entre el mapa y el pie (pedido de Patricio). Nada desborda.

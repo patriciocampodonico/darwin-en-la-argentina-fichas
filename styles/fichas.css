@@ -111,7 +111,7 @@ dl { margin: 0; }
 .r-dato { display: grid; row-gap: calc(var(--baseline) * 0.5); }
 .r-dato dt { color: var(--blue-40); }
 
-.r-notas { grid-row: 16 / 25; display: flex; flex-direction: column; gap: calc(var(--baseline) * 0.5); }
+.r-notas { grid-row: 16 / 25; display: flex; flex-direction: column; justify-content: center;  /* centradas entre el mapa y el pie */ gap: calc(var(--baseline) * 0.5); }
 .r-notas p { font-size: 6.25pt; line-height: 2.8125mm; padding-left: 5.2mm; text-indent: -5.2mm; }
 .r-notas .notetag { text-indent: 0; }
 
