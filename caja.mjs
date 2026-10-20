@@ -17,7 +17,9 @@ const yL = TUCK, y0 = TUCK + D, y1 = y0 + H, yBL = y1 + D, ALTO = yBL + TUCK;
 const NOTCH = 7; // media luna para sacar la tapa
 
 const corte = [
-  `M${xF} ${y0}H${W / 2 - NOTCH}A${NOTCH} ${NOTCH} 0 0 0 ${W / 2 + NOTCH} ${y0}H${xA}`,
+  // media luna en dos curvas (sin arco: clip-path no admite las banderas del arco escaladas)
+  `M${xF} ${y0}H${W / 2 - NOTCH}C${W / 2 - NOTCH} ${y0 + NOTCH * 0.5523} ${W / 2 - NOTCH * 0.5523} ${y0 + NOTCH} ${W / 2} ${y0 + NOTCH}`
+  + `C${W / 2 + NOTCH * 0.5523} ${y0 + NOTCH} ${W / 2 + NOTCH} ${y0 + NOTCH * 0.5523} ${W / 2 + NOTCH} ${y0}H${xA}`,
   // guardapolvo superior del lomo
   `V${y0 - 8}Q${xA} ${y0 - 10} ${xA + 2} ${y0 - 10}H${xB - 1.5}L${xB} ${y0}V${yL}`,
   // tapa con su lengüeta
@@ -58,16 +60,19 @@ for (const x of FICHAS) { const t = tipos.find((t) => t[0] === x.categoria); t ?
 
 const at = (x, y, w, h, cls, html = '', extra = '') => `<div class="${cls}" style="left:${x}mm;top:${y}mm;width:${w}mm;height:${h}mm;${extra}">${html}</div>`;
 
-// Fondos impresos: 3 mm de sangrado en los bordes de corte, 1 mm hacia las solapas que no se imprimen
-const fondos = [
-  at(xB, y0, W, H + B, 'tinta tinta--papel'),
-  at(xF - B, y0 - B, W + B, H + B, 'tinta tinta--azul'),
-  at(xF - B, y0 - B, W + B, 38 + B, 'tinta tinta--imagen'),
-  at(xF - B, y1, W + 2 * B, D + 1, 'tinta tinta--azul'),
-  at(xA, y0 - 1, D, H + 2, 'tinta tinta--azul'),
-  at(xS, y0 - 1, D, H + 2, 'tinta tinta--azul'),
-  at(xB - B, yL - 1, W + 2 * B, D + 1, 'tinta tinta--azul'),
+// Fondos impresos: b mm de sangrado en los bordes de corte, e mm hacia las solapas que no se imprimen
+const fondos = (b = B, e = 1) => [
+  at(xB, y0, W, H + b, 'tinta tinta--papel'),
+  at(xF - b, y0 - b, W + b, H + b, 'tinta tinta--azul'),
+  at(xF - b, y0 - b, W + b, 38 + b, 'tinta tinta--imagen'),
+  at(xF - b, y1, W + 2 * b, D + e, 'tinta tinta--azul'),
+  at(xA, y0 - e, D, H + 2 * e, 'tinta tinta--azul'),
+  at(xS, y0 - e, D, H + 2 * e, 'tinta tinta--azul'),
+  at(xB - b, yL - e, W + 2 * b, D + e, 'tinta tinta--azul'),
 ].join('');
+// A sangre exacta (preentrega): todo el troquel lleno, las solapas en papel, y el arte recortado al contorno
+const PX = 96 / 25.4;
+const CORTE_PX = corte.replace(/-?\d+(\.\d+)?/g, (n) => (+n * PX).toFixed(2));
 
 const frente = at(xF, y0, W, H, 'panel panel--frente', `
   ${MARCA}
@@ -108,7 +113,8 @@ const SIN_TINTA = [[xA + D / 2, y0 - 4.5, 'guardapolvo'], [xS + D / 2, y0 - 4.5,
   [xB + W / 2, yL / 2 + 1, 'lengüeta (sin imprimir)'], [W / 2, yBL + TUCK / 2 + 1, 'lengüeta (sin imprimir)']];
 
 const troquel = (guia) => `<svg class="troquel${guia ? ' troquel--guia' : ''}" viewBox="${-B - 10} ${-B - 10} ${ANCHO + 2 * B + 20} ${ALTO + 2 * B + 20}" style="left:${-B - 10}mm;top:${-B - 10}mm;width:${ANCHO + 2 * B + 20}mm;height:${ALTO + 2 * B + 20}mm" aria-hidden="true">
-${guia === 'negro' ? `<path fill="none" stroke="#fff" stroke-width="0.45" d="${corte}${pliegue}"/><path fill="none" stroke="#000" stroke-width="0.15" d="${corte}"/><path fill="none" stroke="#000" stroke-width="0.15" stroke-dasharray="1.2 0.8" d="${pliegue}"/>` : ''}
+${guia === 'sangre' ? `<path fill="none" stroke="#EFEEE6" stroke-opacity="0.6" stroke-width="0.15" stroke-dasharray="1.2 0.8" d="M${xA} ${y0}V${y1}M${xF} ${y1}H${xA}"/>` : ''}
+${guia === 'negro' ?`<path fill="none" stroke="#fff" stroke-width="0.45" d="${corte}${pliegue}"/><path fill="none" stroke="#000" stroke-width="0.15" d="${corte}"/><path fill="none" stroke="#000" stroke-width="0.15" stroke-dasharray="1.2 0.8" d="${pliegue}"/>` : ''}
 ${guia === true ? `<path class="t-corte" d="${corte}"/><path class="t-pliegue" d="${pliegue}"/>
 <g class="t-rotulo">${SIN_TINTA.map(([x, y, t]) => `<text x="${x}" y="${y}">${t}</text>`).join('')}<text x="${xG + GLUE / 2}" y="${(y0 + y1) / 2}" transform="rotate(-90 ${xG + GLUE / 2} ${(y0 + y1) / 2})">pegar · sin imprimir</text></g>` : ''}
 <g class="t-marcas"><path fill="none" stroke="#000" stroke-width="0.12" d="${[
@@ -120,7 +126,9 @@ ${guia === true ? `<path class="t-corte" d="${corte}"/><path class="t-pliegue" d
 </svg>`;
 
 const caja = (guia) => `<div class="troquel-arte" style="left:${OX}mm;top:${OY}mm;width:${ANCHO}mm;height:${ALTO}mm">
-<div class="arte">${fondos}${frente}${lomo}${dorso}${lateral}${tapa}${fondo}</div>
+${guia === 'sangre'
+    ? `<div class="arte" style="clip-path:path('${CORTE_PX}')">${at(0, 0, ANCHO, ALTO, 'tinta tinta--papel')}${fondos(0, 0)}${frente}${lomo}${dorso}${lateral}${tapa}${fondo}</div>`
+    : `<div class="arte">${fondos()}${frente}${lomo}${dorso}${lateral}${tapa}${fondo}</div>`}
 ${troquel(guia)}
 </div>`;
 
@@ -202,8 +210,8 @@ const hojas = [
   `<div class="hoja">${caja(false)}${rotulo(`<b>Para imprimir</b> · ${datos} · marcas de corte y de pliegue fuera del sangrado`)}</div>`,
 ];
 
-// Preentrega: el arte con el troquel en negro fino, para cortar y doblar a mano
-const preentrega = `<div class="hoja">${caja('negro')}${rotulo(`<b>Preentrega</b> · ${datos}<br><span class="leyenda"><i style="border-color:#000"></i>corte</span><span class="leyenda"><i class="p" style="border-color:#000"></i>pliegue</span>Imprimir al 100 % en cartulina de 300–350 g, de un solo lado. Las partes en blanco no llevan tinta; la solapa angosta se pega por dentro del frente.`)}</div>`;
+// Preentrega: a sangre exacta, sin demasía; el borde del color es la línea de corte y los cambios de color marcan los pliegues
+const preentrega = `<div class="hoja">${caja('sangre')}${rotulo(`<b>Preentrega</b> · Caja de las fichas · interior ${W} × ${H} × ${D} mm (para ${TOTAL} fichas de 74 × 105 mm) · troquel ${ANCHO} × ${ALTO} mm · sin demasía<br>Cortar por el borde de la impresión. Doblar donde cambia el color; donde no cambia (frente y lomo, frente y fondo) hay una línea de puntos clara.<br>Imprimir al 100 % en cartulina de 300–350 g, de un solo lado. La solapa angosta se pega por dentro del frente.`)}</div>`;
 
 const html = (hojas) => `<!doctype html>
 <!-- GENERADO por caja.mjs — no editar a mano. -->
