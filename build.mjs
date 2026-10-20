@@ -167,6 +167,29 @@ writeFileSync(join(ROOT, 'imprenta.html'), pagina(pliegos.join('\n'), `<style>@p
 .marcas { position: absolute; inset: 0; width: 210mm; height: 297mm; } .marcas path { fill: none; stroke: #000; stroke-width: 0.1; }
 .pliego__rotulo { position: absolute; left: ${X0}mm; top: ${Y0 + 232}mm; margin: 0; font: 500 6pt Inter, Arial, sans-serif; color: #000; }
 @media screen { body { background: #8f9499; } .pliego { margin: 8mm auto; } }</style>\n`));
+// imprenta-A3.html: pliegos A3 con 9 fichas (3 × 3), para cortar rápido.
+// Frentes al corte exacto, sin demasía, con un rectángulo negro por fuera del borde de corte; dorsos con 3 mm de demasía y sin rectángulo.
+// Entre fichas quedan 6 mm (la demasía de los dorsos). Dorsos espejados: doble faz volteando por el lado largo.
+const A3 = { w: 297, h: 420, cols: 3, filas: 3, gap: 6 };
+const A3X = (A3.w - (A3.cols * 74 + (A3.cols - 1) * A3.gap)) / 2, A3Y = (A3.h - (A3.filas * 105 + (A3.filas - 1) * A3.gap)) / 2;
+const porA3 = A3.cols * A3.filas, pliegosA3 = [];
+for (let i = 0; i < FICHAS.length; i += porA3) {
+  const grupo = FICHAS.slice(i, i + porA3), n = i / porA3 + 1, de = Math.ceil(FICHAS.length / porA3);
+  for (const lado of ['frentes', 'dorsos'])
+    pliegosA3.push(`<div class="pliego">${grupo.map((x, k) => {
+      const col = lado === 'frentes' ? k % A3.cols : A3.cols - 1 - (k % A3.cols), fila = Math.floor(k / A3.cols);
+      const left = A3X + col * (74 + A3.gap), top = A3Y + fila * (105 + A3.gap);
+      return lado === 'frentes'
+        ? `<div class="recorte recorte--marco" style="left:${left}mm;top:${top}mm">${anverso(x)}</div>`
+        : `<div class="puesto" style="left:${left - 3}mm;top:${top - 3}mm">${reverso(x)}</div>`;
+    }).join('')}<p class="pliego__rotulo">Darwin en la Argentina · fichas de campo · pliego ${n} de ${de} · ${lado} · fichas ${grupo.map((x) => x.num).join(', ')} · A3 · ${lado === 'frentes' ? 'cortar por el borde interior del rectángulo negro' : 'demasía 3 mm'}</p></div>`);
+}
+writeFileSync(join(ROOT, 'imprenta-A3.html'), pagina(pliegosA3.join('\n'), `<style>@page { size: 297mm 420mm; margin: 0; } body { display: block; padding: 0; background: none; }
+.pliego { position: relative; width: 297mm; height: 420mm; overflow: hidden; break-after: page; background: #fff; }
+.puesto, .pliego .recorte { position: absolute; }
+.pliego .recorte--marco { overflow: hidden; box-shadow: 0 0 0 0.3mm #000; }
+.pliego__rotulo { position: absolute; left: ${A3X}mm; top: ${A3.h - A3Y + 6}mm; margin: 0; font: 500 7pt Inter, Arial, sans-serif; color: #000; }
+@media screen { body { background: #8f9499; } .pliego { margin: 8mm auto; } }</style>\n`));
 console.log(`Fichas armadas: ${FICHAS.length}/${TOTAL}`);
 
 const chrome = ['C:/Program Files/Google/Chrome/Application/chrome.exe', 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(existsSync);
@@ -230,5 +253,6 @@ if (cmd === 'prueba') {
 if (cmd === 'pdf') {
   run([`--print-to-pdf=${out('fichas-pantalla.pdf')}`, '--no-pdf-header-footer', url('pantalla.html')]);
   run([`--print-to-pdf=${out('fichas-imprenta.pdf')}`, '--no-pdf-header-footer', url('imprenta.html')]);
+  run([`--print-to-pdf=${out('fichas-doble-faz-A3.pdf')}`, '--no-pdf-header-footer', url('imprenta-A3.html')]);
   console.log('PDF en salida/');
 }

@@ -115,3 +115,7 @@ Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobado
 - 20 oct. 2026 · Caja: versión de preentrega (caja-preentrega.html → salida/caja-preentrega.pdf) con el troquel en negro fino (0,15 mm; corte continuo, pliegue a trazos) sobre un filete blanco para que se vea sobre el azul. Para cortar y doblar a mano.
 - 20 oct. 2026 · Caja, preentrega rehecha (pedido de Patricio): a sangre exacta, sin demasía ni líneas negras. El arte se recorta al contorno del troquel (clip-path); solapas, guardapolvos y lengüetas en papel #EFEEE6 para que se vean sobre la hoja blanca. Los pliegues se ven por el cambio de color; donde no cambia (frente–lomo, frente–fondo) va una línea de puntos clara. La media luna pasó de arco a dos curvas (clip-path no admitía el arco escalado).
 - 20 oct. 2026 · El PDF de preentrega de la caja pasa a llamarse caja-preentrega-A4.pdf.
+
+## 20 oct. 2026 — PDF doble faz A3 para cortar rápido
+- imprenta-A3.html → salida/fichas-doble-faz-A3.pdf: 3 pliegos A3 (6 páginas: frentes, dorsos), 9 fichas por pliego (3 × 3; el último con 6). Elegido A3 frente a A4 (4 por hoja → 6 pliegos): la mitad de hojas y de cortes.
+- Frentes al corte exacto, sin demasía, con un rectángulo negro de 0,3 mm por fuera del borde de corte (pedido de Patricio). Dorsos con 3 mm de demasía, sin rectángulo, espejados para doble faz volteando por el lado largo. 6 mm entre fichas.
