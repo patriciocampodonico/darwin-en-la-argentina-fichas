@@ -1,0 +1,110 @@
+<!doctype html>
+<!-- GENERADO por caja.mjs — no editar a mano. -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=800">
+<title>Darwin en la Argentina — caja de las fichas</title>
+<link rel="stylesheet" href="styles/fichas.css">
+<style>@page { size: 210mm 297mm; margin: 0; } html, body { display: block; padding: 0; margin: 0; }
+.hoja { position: relative; width: 210mm; height: 297mm; overflow: hidden; break-after: page; background: #fff; }
+.troquel-arte { position: absolute; }
+.arte { position: absolute; inset: 0; overflow: visible; }
+.arte > div { position: absolute; box-sizing: border-box; }
+.tinta--papel { background: var(--paper); }
+.tinta--azul { background: var(--blue-deep); }
+.tinta--imagen { background: url(assets/images/caja-san-julian.jpg) 50% 47% / cover no-repeat; }
+.panel { color: var(--paper); font-family: var(--font-ui); font-kerning: normal; font-synthesis: none; }
+.panel p, .panel h1, .panel h2, .panel dl, .panel dd { margin: 0; font-weight: 400; }
+.panel > * { position: absolute; }
+
+/* Frente: la tapa del libro en vertical */
+.panel--frente .marca { left: 6mm; top: 43.5mm; width: 6mm; height: 6mm; }
+.f-autor { left: 14.5mm; top: 44.6mm; font-size: 6.5pt; font-weight: 500; line-height: 3.75mm; }
+.f-titulo { left: 6mm; right: 5mm; top: 53mm; font-family: var(--font-display); font-size: 21pt; line-height: 8.4mm; letter-spacing: -0.01em; }
+.f-sub { left: 6mm; top: 71.5mm; font-family: var(--font-display); font-style: italic; font-size: 12pt; line-height: 5mm; }
+.panel--frente .ruta { left: 6mm; top: 89mm; }
+.f-pie { left: 6mm; right: 6mm; top: 94.6mm; display: flex; justify-content: space-between; font-size: 5.5pt; font-weight: 500; line-height: 3mm; }
+.ruta { display: block; overflow: visible; }
+.ruta path { fill: none; stroke: currentColor; stroke-width: 0.2; }
+.ruta circle { fill: currentColor; }
+
+/* Dorso: papel, como la contratapa */
+.panel--dorso { color: var(--blue-deep); }
+.d-titulo { left: 6mm; right: 6mm; top: 7mm; font-family: var(--font-display); font-size: 14pt; line-height: 6mm; letter-spacing: -0.005em; }
+.d-texto { left: 6mm; right: 6mm; top: 22.5mm; font-size: 6.25pt; line-height: 2.95mm; text-align: justify; hyphens: auto; }
+.d-tipos { left: 6mm; right: 6mm; top: 46mm; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4mm 2mm; padding-top: 1.6mm;
+  background: linear-gradient(var(--blue-deep), var(--blue-deep)) top / 100% var(--rule-fine) no-repeat; }
+.d-tipos div { display: flex; gap: 1.2mm; font-size: 5.5pt; line-height: 2.6mm; }
+.d-tipos dt { font-weight: 500; } .d-tipos dd { font-weight: 700; font-variant-numeric: tabular-nums; }
+.d-notas { left: 6mm; right: 6mm; top: 58.5mm; display: grid; gap: 1.1mm; }
+.d-notas p { font-size: 5.75pt; line-height: 3mm; }
+.panel--dorso .notetag { box-shadow: inset 0 0 0 var(--rule-fine) var(--blue-deep); color: var(--blue-deep); margin-right: 1.6mm; min-width: 4mm; }
+.panel--dorso .notetag--ed { background: var(--blue-deep); color: var(--paper); }
+.d-pie { left: 6mm; right: 6mm; top: 74mm; bottom: 6mm; display: grid; grid-template-columns: 1fr 21mm; column-gap: 3mm; padding-top: 2mm;
+  background: linear-gradient(var(--blue-deep), var(--blue-deep)) top / 100% var(--rule-fine) no-repeat; }
+.d-pie > div { display: flex; flex-direction: column; gap: 1.6mm; }
+.d-qr-rotulo { font-size: 6pt; line-height: 2.9mm; }
+.d-qr-rotulo b { display: block; font-weight: 700; }
+.d-creditos { font-size: 4.75pt; line-height: 2.35mm; color: var(--blue-80); }
+.d-qr { width: 21mm; height: 21mm; display: block; align-self: start; }
+
+/* Lomo y lateral: texto de abajo hacia arriba */
+.lado-texto { left: 50%; top: 50%; width: 97mm; transform: translate(-50%, -50%) rotate(-90deg); display: flex; align-items: center; justify-content: center; gap: 1.6mm;
+  font-size: 7pt; line-height: 4mm; white-space: nowrap; }
+.lado-texto b { font-weight: 600; }
+.lado-texto span { font-weight: 400; }
+.lado-texto .marca { position: static; width: 4.4mm; height: 4.4mm; }
+
+/* Tapas */
+.tapa-texto { inset: 0; display: flex; align-items: center; justify-content: center; gap: 1.8mm; transform: rotate(180deg); font-size: 6.5pt; font-weight: 600; }
+.tapa-texto .marca { position: static; width: 4.4mm; height: 4.4mm; }
+.tapa-texto--fondo { transform: none; font-size: 5.5pt; font-weight: 500; }
+
+/* Troquel: corte continuo, pliegue a trazos (solo en la hoja guía) */
+.troquel { position: absolute; overflow: visible; }
+.t-corte { fill: none; stroke: #E6007E; stroke-width: 0.2; }
+.t-pliegue { fill: none; stroke: #E6007E; stroke-width: 0.2; stroke-dasharray: 1.2 0.8; }
+.t-rotulo text { font: 500 1.3px Inter, Arial, sans-serif; fill: #9a9a9a; text-anchor: middle; }
+.t-marcas path { fill: none; stroke: #000; stroke-width: 0.12; }
+.hoja__rotulo { position: absolute; left: 14mm; right: 14mm; margin: 0; font: 500 6pt/3.2mm Inter, Arial, sans-serif; color: #000; }
+.hoja__rotulo b { font-weight: 700; }
+.leyenda { display: inline-flex; align-items: center; gap: 1mm; margin-right: 4mm; }
+.leyenda i { display: inline-block; width: 6mm; border-top: 0.25mm solid #E6007E; }
+.leyenda i.p { border-top-style: dashed; }
+@media screen { body { background: #8f9499; } .hoja { margin: 8mm auto; } }
+</style>
+</head>
+<body>
+<div class="hoja"><div class="troquel-arte" style="left:13.5mm;top:34mm;width:183mm;height:157mm">
+<div class="arte"><div class="tinta tinta--papel" style="left:87mm;top:25mm;width:76mm;height:110mm;"></div><div class="tinta tinta--azul" style="left:-3mm;top:22mm;width:79mm;height:110mm;"></div><div class="tinta tinta--imagen" style="left:-3mm;top:22mm;width:79mm;height:41mm;"></div><div class="tinta tinta--azul" style="left:-3mm;top:132mm;width:82mm;height:12mm;"></div><div class="tinta tinta--azul" style="left:76mm;top:24mm;width:11mm;height:109mm;"></div><div class="tinta tinta--azul" style="left:163mm;top:24mm;width:11mm;height:109mm;"></div><div class="tinta tinta--azul" style="left:84mm;top:13mm;width:82mm;height:12mm;"></div><div class="panel panel--frente" style="left:0mm;top:25mm;width:76mm;height:107mm;">
+  <svg class="marca" viewBox="0 0 9 9" aria-hidden="true"><circle cx="4.5" cy="4.5" r="4.3"/><path d="M4.5 0.2V2.4M4.5 6.6V8.8M0.2 4.5H2.4M6.6 4.5H8.8"/><circle class="marca__punto" cx="4.5" cy="4.5" r="0.55"/></svg>
+  <p class="f-autor">Charles Darwin</p>
+  <h1 class="f-titulo">Darwin<br>en la Argentina</h1>
+  <p class="f-sub">Fichas de campo</p>
+  <svg class="ruta" viewBox="0 0 64 4.2" style="width:64mm;height:4.2mm" aria-hidden="true"><path d="M0.50 3.13C1.25 3.04 3.50 2.85 5.00 2.56C6.50 2.28 8.00 1.69 9.50 1.42C11.00 1.16 12.50 0.94 14.00 1.00C15.50 1.06 17.00 1.50 18.50 1.78C20.00 2.06 21.50 2.65 23.00 2.70C24.50 2.76 26.00 2.41 27.50 2.14C29.00 1.86 30.50 1.34 32.00 1.07C33.50 0.80 35.00 0.51 36.50 0.50C38.00 0.49 39.50 0.75 41.00 1.00C42.50 1.25 44.00 1.65 45.50 1.99C47.00 2.34 48.50 2.78 50.00 3.06C51.50 3.34 53.00 3.68 54.50 3.70C56.00 3.72 57.50 3.42 59.00 3.20C60.50 2.99 62.75 2.55 63.50 2.42"/><circle cx="0.50" cy="3.13" r="0.42"/><circle cx="5.00" cy="2.56" r="0.42"/><circle cx="9.50" cy="1.42" r="0.42"/><circle cx="14.00" cy="1.00" r="0.42"/><circle cx="18.50" cy="1.78" r="0.42"/><circle cx="23.00" cy="2.70" r="0.42"/><circle cx="27.50" cy="2.14" r="0.42"/><circle cx="32.00" cy="1.07" r="0.42"/><circle cx="36.50" cy="0.50" r="0.42"/><circle cx="41.00" cy="1.00" r="0.42"/><circle cx="45.50" cy="1.99" r="0.42"/><circle cx="50.00" cy="3.06" r="0.42"/><circle cx="54.50" cy="3.70" r="0.42"/><circle cx="59.00" cy="3.20" r="0.42"/><circle cx="63.50" cy="2.42" r="0.42"/></svg>
+  <p class="f-pie"><span>01</span><span>24 fichas · 15 paradas · 1832–1834</span><span>15</span></p></div><div class="panel panel--lado" style="left:76mm;top:25mm;width:11mm;height:107mm;"><p class="lado-texto"><svg class="marca" viewBox="0 0 9 9" aria-hidden="true"><circle cx="4.5" cy="4.5" r="4.3"/><path d="M4.5 0.2V2.4M4.5 6.6V8.8M0.2 4.5H2.4M6.6 4.5H8.8"/><circle class="marca__punto" cx="4.5" cy="4.5" r="0.55"/></svg><b>Darwin en la Argentina</b><span>Fichas de campo</span></p></div><div class="panel panel--dorso" style="left:87mm;top:25mm;width:76mm;height:107mm;">
+  <h2 class="d-titulo">Un territorio<br>en 24 fichas</h2>
+  <p class="d-texto">Cada ficha toma un pasaje del diario de Charles Darwin en el actual territorio argentino. En el frente, una imagen, el texto original y los datos del registro; en el dorso, la parada en el mapa del recorrido y las notas que acompañan la lectura. Se pueden ordenar por parada, por fecha o por tema, y leer junto al libro y al mapa digital.</p>
+  <dl class="d-tipos"><div><dt>Flora</dt><dd>2</dd></div><div><dt>Paisaje</dt><dd>1</dd></div><div><dt>Territorio</dt><dd>5</dd></div><div><dt>Materiales</dt><dd>1</dd></div><div><dt>Fauna</dt><dd>4</dd></div><div><dt>Observación</dt><dd>6</dd></div><div><dt>Fósil</dt><dd>5</dd></div></dl>
+  <div class="d-notas">
+    <p><span class="notetag">D</span>Nota de Darwin</p>
+    <p><span class="notetag">E</span>Nota de la edición española de 1921</p>
+    <p><span class="notetag notetag--ed">ED</span>Nota editorial del proyecto</p>
+  </div>
+  <div class="d-pie">
+    <div>
+      <p class="d-qr-rotulo"><b>Mapa digital</b>Escaneá el código para recorrer las 15 paradas en el mapa interactivo.</p>
+      <p class="d-creditos">Selección a partir de <i>Diario del viaje de un naturalista alrededor del mundo</i>, traducción española de Espasa-Calpe, 1921.</p>
+      <p class="d-creditos">Proyecto académico de Diseño Editorial – FAPyD, Universidad Nacional de Rosario. 2026. Patricio Campodonico · Martina Emma Calderón Calp</p>
+    </div>
+    <img class="d-qr" src="assets/images/qr-mapa-digital.svg" alt="Código QR: enlace al mapa digital">
+  </div></div><div class="panel panel--lado" style="left:163mm;top:25mm;width:11mm;height:107mm;"><p class="lado-texto"><span>24 fichas · 15 paradas · 1832–1834</span></p></div><div class="panel panel--tapa" style="left:87mm;top:14mm;width:76mm;height:11mm;"><p class="tapa-texto"><svg class="marca" viewBox="0 0 9 9" aria-hidden="true"><circle cx="4.5" cy="4.5" r="4.3"/><path d="M4.5 0.2V2.4M4.5 6.6V8.8M0.2 4.5H2.4M6.6 4.5H8.8"/><circle class="marca__punto" cx="4.5" cy="4.5" r="0.55"/></svg><span>Fichas de campo</span></p></div><div class="panel panel--tapa" style="left:0mm;top:132mm;width:76mm;height:11mm;"><p class="tapa-texto tapa-texto--fondo"><span>Diseño Editorial · FAPyD · UNR · 2026</span></p></div></div>
+<svg class="troquel troquel--guia" viewBox="-13 -13 209 183" style="left:-13mm;top:-13mm;width:209mm;height:183mm" aria-hidden="true">
+<path fill="none" stroke="#fff" stroke-width="0.45" d="M0 25H31A7 7 0 0 0 45 25H76V17Q76 15 78 15H85.5L87 25V14H88.5V5Q88.5 0 93.5 0H156.5Q161.5 0 161.5 5V14H163V25L164.5 15H172Q174 15 174 17V25L183 29V128L174 132V140Q174 142 172 142H164.5L163 132H87L85.5 142H78Q76 142 76 140V132V143H74.5V152Q74.5 157 69.5 157H6.5Q1.5 157 1.5 152V143H0ZM76 25V132M87 25V132M163 25V132M174 25V132M87 25H163M88.5 14H161.5M76 25H87M163 25H174M0 132H76M1.5 143H74.5M76 132H87M163 132H174"/><path fill="none" stroke="#000" stroke-width="0.15" d="M0 25H31A7 7 0 0 0 45 25H76V17Q76 15 78 15H85.5L87 25V14H88.5V5Q88.5 0 93.5 0H156.5Q161.5 0 161.5 5V14H163V25L164.5 15H172Q174 15 174 17V25L183 29V128L174 132V140Q174 142 172 142H164.5L163 132H87L85.5 142H78Q76 142 76 140V132V143H74.5V152Q74.5 157 69.5 157H6.5Q1.5 157 1.5 152V143H0Z"/><path fill="none" stroke="#000" stroke-width="0.15" stroke-dasharray="1.2 0.8" d="M76 25V132M87 25V132M163 25V132M174 25V132M87 25H163M88.5 14H161.5M76 25H87M163 25H174M0 132H76M1.5 143H74.5M76 132H87M163 132H174"/>
+
+<g class="t-marcas"><path fill="none" stroke="#000" stroke-width="0.12" d="M0 -5V-10M-5 0H-10M0 162V167M-5 157H-10M183 -5V-10M188 0H193M183 162V167M188 157H193M76 -5V-9M76 162V166M87 -5V-9M87 162V166M163 -5V-9M163 162V166M174 -5V-9M174 162V166M-5 25H-9M188 25H192M-5 132H-9M188 132H192"/></g>
+</svg>
+</div><p class="hoja__rotulo" style="top:208mm"><b>Preentrega</b> · Caja de las fichas · estuche con solapas · interior 76 × 107 × 11 mm (para 24 fichas de 74 × 105 mm) · troquel 183 × 157 mm · sangrado 3 mm<br><span class="leyenda"><i style="border-color:#000"></i>corte</span><span class="leyenda"><i class="p" style="border-color:#000"></i>pliegue</span>Imprimir al 100 % en cartulina de 300–350 g, de un solo lado. Las partes en blanco no llevan tinta; la solapa angosta se pega por dentro del frente.</p></div>
+</body>
+</html>

@@ -108,7 +108,8 @@ const SIN_TINTA = [[xA + D / 2, y0 - 4.5, 'guardapolvo'], [xS + D / 2, y0 - 4.5,
   [xB + W / 2, yL / 2 + 1, 'lengüeta (sin imprimir)'], [W / 2, yBL + TUCK / 2 + 1, 'lengüeta (sin imprimir)']];
 
 const troquel = (guia) => `<svg class="troquel${guia ? ' troquel--guia' : ''}" viewBox="${-B - 10} ${-B - 10} ${ANCHO + 2 * B + 20} ${ALTO + 2 * B + 20}" style="left:${-B - 10}mm;top:${-B - 10}mm;width:${ANCHO + 2 * B + 20}mm;height:${ALTO + 2 * B + 20}mm" aria-hidden="true">
-${guia ? `<path class="t-corte" d="${corte}"/><path class="t-pliegue" d="${pliegue}"/>
+${guia === 'negro' ? `<path fill="none" stroke="#fff" stroke-width="0.45" d="${corte}${pliegue}"/><path fill="none" stroke="#000" stroke-width="0.15" d="${corte}"/><path fill="none" stroke="#000" stroke-width="0.15" stroke-dasharray="1.2 0.8" d="${pliegue}"/>` : ''}
+${guia === true ? `<path class="t-corte" d="${corte}"/><path class="t-pliegue" d="${pliegue}"/>
 <g class="t-rotulo">${SIN_TINTA.map(([x, y, t]) => `<text x="${x}" y="${y}">${t}</text>`).join('')}<text x="${xG + GLUE / 2}" y="${(y0 + y1) / 2}" transform="rotate(-90 ${xG + GLUE / 2} ${(y0 + y1) / 2})">pegar · sin imprimir</text></g>` : ''}
 <g class="t-marcas"><path fill="none" stroke="#000" stroke-width="0.12" d="${[
   // marcas de corte en las esquinas del troquel y de pliegue afuera del sangrado
@@ -201,7 +202,10 @@ const hojas = [
   `<div class="hoja">${caja(false)}${rotulo(`<b>Para imprimir</b> · ${datos} · marcas de corte y de pliegue fuera del sangrado`)}</div>`,
 ];
 
-const html = `<!doctype html>
+// Preentrega: el arte con el troquel en negro fino, para cortar y doblar a mano
+const preentrega = `<div class="hoja">${caja('negro')}${rotulo(`<b>Preentrega</b> · ${datos}<br><span class="leyenda"><i style="border-color:#000"></i>corte</span><span class="leyenda"><i class="p" style="border-color:#000"></i>pliegue</span>Imprimir al 100 % en cartulina de 300–350 g, de un solo lado. Las partes en blanco no llevan tinta; la solapa angosta se pega por dentro del frente.`)}</div>`;
+
+const html = (hojas) => `<!doctype html>
 <!-- GENERADO por caja.mjs — no editar a mano. -->
 <html lang="es">
 <head>
@@ -216,7 +220,8 @@ ${hojas.join('\n')}
 </body>
 </html>
 `;
-writeFileSync(join(ROOT, 'caja.html'), html);
+writeFileSync(join(ROOT, 'caja.html'), html(hojas));
+writeFileSync(join(ROOT, 'caja-preentrega.html'), html([preentrega]));
 console.log(`Caja: troquel ${ANCHO} × ${ALTO} mm · interior ${W} × ${H} × ${D} mm`);
 
 const chrome = ['C:/Program Files/Google/Chrome/Application/chrome.exe', 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(existsSync);
@@ -226,5 +231,8 @@ if (cmd !== 'html') {
   run([`--print-to-pdf=${join(ROOT, 'salida', 'caja-imprenta.pdf')}`, '--no-pdf-header-footer', url]);
   // Captura de la hoja guía a 3 px por mm
   run(['--force-device-scale-factor=3.78', '--window-size=794,1123', `--screenshot=${join(ROOT, 'salida', 'caja.png')}`, url]);
+  const urlP = pathToFileURL(join(ROOT, 'caja-preentrega.html')).href;
+  run([`--print-to-pdf=${join(ROOT, 'salida', 'caja-preentrega.pdf')}`, '--no-pdf-header-footer', urlP]);
+  run(['--force-device-scale-factor=3.78', '--window-size=794,1123', `--screenshot=${join(ROOT, 'salida', 'caja-preentrega.png')}`, urlP]);
   console.log('PDF y captura en salida/');
 }
