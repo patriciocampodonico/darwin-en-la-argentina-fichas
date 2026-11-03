@@ -1,6 +1,6 @@
 ﻿// Caja contenedora de las 24 fichas: estuche de solapas (tuck end) para el mazo de 74 × 105 mm.
 //   node caja.mjs        arma caja.html (A4: troquel con el arte) y salida/caja-imprenta.pdf + salida/caja.png
-// Medidas interiores: 76 × 107 × 11 mm (1 mm de holgura por lado; 24 fichas de cartulina de 300 g ≈ 8,5 mm).
+// Medidas interiores: 78 × 109 × 12 mm (2 mm de holgura por lado para fichas cortadas a mano; 24 fichas de cartulina de 300 g ≈ 8,5 mm).
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -11,7 +11,7 @@ const ROOT = dirname(fileURLToPath(import.meta.url));
 const [cmd] = process.argv.slice(2);
 
 // ── Troquel (mm). Orden de paneles: frente · lomo · dorso · lateral · solapa de pegado ──
-const W = 76, H = 107, D = 11, TUCK = 14, GLUE = 9, B = 3;
+const W = 78, H = 109, D = 12, TUCK = 14, GLUE = 9, B = 3;
 const xF = 0, xA = W, xB = W + D, xS = 2 * W + D, xG = 2 * W + 2 * D, ANCHO = xG + GLUE;
 const yL = TUCK, y0 = TUCK + D, y1 = y0 + H, yBL = y1 + D, ALTO = yBL + TUCK;
 const NOTCH = 7; // media luna para sacar la tapa

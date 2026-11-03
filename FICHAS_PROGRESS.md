@@ -121,3 +121,6 @@ Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobado
 - Frentes al corte exacto, sin demasía, con un rectángulo negro de 0,3 mm por fuera del borde de corte (pedido de Patricio). Dorsos con 3 mm de demasía, sin rectángulo, espejados para doble faz volteando por el lado largo. 6 mm entre fichas.
 
 - 20 oct. 2026 · A3 doble faz: se quita el rectángulo negro de los frentes; quedan a sangre al corte exacto, sin demasía. Dorsos sin cambios (3 mm de demasía, espejados).
+
+## 3 nov. 2026 — Caja más grande
+- Interior de la caja de 76 × 107 × 11 a 78 × 109 × 12 mm (2 mm de holgura por lado), para que entren las fichas cortadas a mano. Troquel 189 × 161 mm, sigue entrando en A4. Diseño sin cambios.
