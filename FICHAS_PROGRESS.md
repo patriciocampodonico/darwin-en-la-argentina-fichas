@@ -124,3 +124,4 @@ Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobado
 
 ## 3 nov. 2026 — Caja más grande
 - Interior de la caja de 76 × 107 × 11 a 78 × 109 × 12 mm (2 mm de holgura por lado), para que entren las fichas cortadas a mano. Troquel 189 × 161 mm, sigue entrando en A4. Diseño sin cambios.
+- Dorso de las 24 fichas: «Darwin en la Argentina» de la cabecera pasa de Playfair 9,5 pt a Inter semibold 9 pt (la Playfair chica perdía los trazos finos).
