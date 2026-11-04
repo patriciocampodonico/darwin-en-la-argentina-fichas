@@ -125,3 +125,4 @@ Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobado
 ## 3 nov. 2026 — Caja más grande
 - Interior de la caja de 76 × 107 × 11 a 78 × 109 × 12 mm (2 mm de holgura por lado), para que entren las fichas cortadas a mano. Troquel 189 × 161 mm, sigue entrando en A4. Diseño sin cambios.
 - Dorso de las 24 fichas: «Darwin en la Argentina» de la cabecera pasa de Playfair 9,5 pt a Inter semibold 9 pt (la Playfair chica perdía los trazos finos).
+- Nuevo salida/caja-y-fichas-A3.pdf (py tools/pliego_caja.py, después de node build.mjs pdf y node caja.mjs): 3 pliegos A3 doble faz sin marcas ni texto. Pliego 1: caja a sangre + fichas 1–7; pliego 2: 8–16; pliego 3: 17–24. Frentes a sangre, dorsos con 3 mm de demasía y espejados (voltear por el lado largo). La caja es de una cara: su lugar en el dorso queda en blanco.

@@ -1,0 +1,75 @@
+"""Pliegos A3 doble faz: la caja a sangre + fichas en el espacio que sobra, y el resto de las fichas 3 × 3.
+
+Toma las piezas ya armadas (vectoriales) de salida/caja-preentrega-A4.pdf y salida/fichas-doble-faz-A3.pdf:
+frentes a sangre al corte exacto, dorsos con 3 mm de demasía, espejados para voltear por el lado largo.
+La caja es de una sola cara: en el dorso su lugar queda en blanco. Sin marcas ni texto.
+
+    py tools/pliego_caja.py   →  salida/caja-y-fichas-A3.pdf
+"""
+from pathlib import Path
+import pymupdf
+
+ROOT = Path(__file__).resolve().parent.parent
+SAL = ROOT / 'salida'
+MM = 72 / 25.4
+W, H, FW, FH, GAP, DEM = 297, 420, 74, 105, 6, 3
+
+# Caja (caja.mjs): troquel 189 × 161 mm, centrada en la A4 con OY = 34
+CW, CH = 189, 161
+COX, COY = (210 - CW) / 2, 34
+
+# Grilla del A3 de fichas (build.mjs): 3 × 3, 6 mm entre fichas
+GX, GY = (W - (3 * FW + 2 * GAP)) / 2, (H - (3 * FH + 2 * GAP)) / 2
+
+
+def r(x, y, w, h):
+    return pymupdf.Rect(x * MM, y * MM, (x + w) * MM, (y + h) * MM)
+
+
+def origen(k):
+    """Página y lugar de la ficha k (0–23) en fichas-doble-faz-A3.pdf."""
+    s, j = divmod(k, 9)
+    fila, col = divmod(j, 3)
+    x, y = GX + col * (FW + GAP), GY + fila * (FH + GAP)
+    xd = GX + (2 - col) * (FW + GAP)
+    return 2 * s, r(x, y, FW, FH), 2 * s + 1, r(xd - DEM, y - DEM, FW + 2 * DEM, FH + 2 * DEM)
+
+
+def poner(frente, dorso, fichas, lugares):
+    for k, (x, y) in zip(fichas, lugares):
+        pf, rf, pd, rd = origen(k)
+        frente.show_pdf_page(r(x, y, FW, FH), A3, pf, clip=rf)
+        xd = W - x - FW  # espejado: doble faz volteando por el lado largo
+        dorso.show_pdf_page(r(xd - DEM, y - DEM, FW + 2 * DEM, FH + 2 * DEM), A3, pd, clip=rd)
+
+
+A3 = pymupdf.open(SAL / 'fichas-doble-faz-A3.pdf')
+CAJA = pymupdf.open(SAL / 'caja-preentrega-A4.pdf')
+out = pymupdf.open()
+
+
+def par():
+    for _ in range(2):
+        out.new_page(width=W * MM, height=H * MM)
+    return out[-2], out[-1]
+
+
+# Pliego 1: caja arriba a la izquierda, una ficha a su derecha, dos filas de tres abajo
+mx = (W - (CW + GAP + FW)) / 2
+my = (H - (CH + GAP + 2 * FH + GAP)) / 2
+xd = mx + CW + GAP
+y2 = my + CH + GAP
+lugares = [(xd, my)] + [(xd - c * (FW + GAP), y2 + f * (FH + GAP)) for f in range(2) for c in (2, 1, 0)]
+fr, do = par()
+fr.show_pdf_page(r(mx, my, CW, CH), CAJA, 0, clip=r(COX, COY, CW, CH))
+poner(fr, do, range(7), lugares)
+
+# Pliegos 2 y 3: el resto de las fichas en la grilla 3 × 3 de siempre
+grilla = [(GX + c * (FW + GAP), GY + f * (FH + GAP)) for f in range(3) for c in range(3)]
+for desde in (7, 16):
+    fichas = range(desde, min(desde + 9, 24))
+    fr, do = par()
+    poner(fr, do, fichas, grilla)
+
+out.save(SAL / 'caja-y-fichas-A3.pdf', garbage=3, deflate=True)
+print(f'caja-y-fichas-A3.pdf · {out.page_count} páginas A3 · pliego 1: caja + fichas 1–7 · pliego 2: 8–16 · pliego 3: 17–24')
