@@ -1,4 +1,4 @@
-"""Pliegos A3 doble faz: la caja a sangre + fichas en el espacio que sobra, y el resto de las fichas 3 × 3.
+"""Pliego A3 doble faz: la caja a sangre + fichas 1–7 en el espacio que sobra.
 
 Toma las piezas ya armadas (vectoriales) de salida/caja-preentrega-A4.pdf y salida/fichas-doble-faz-A3.pdf:
 frentes a sangre al corte exacto, dorsos con 3 mm de demasía, espejados para voltear por el lado largo.
@@ -64,12 +64,5 @@ fr, do = par()
 fr.show_pdf_page(r(mx, my, CW, CH), CAJA, 0, clip=r(COX, COY, CW, CH))
 poner(fr, do, range(7), lugares)
 
-# Pliegos 2 y 3: el resto de las fichas en la grilla 3 × 3 de siempre
-grilla = [(GX + c * (FW + GAP), GY + f * (FH + GAP)) for f in range(3) for c in range(3)]
-for desde in (7, 16):
-    fichas = range(desde, min(desde + 9, 24))
-    fr, do = par()
-    poner(fr, do, fichas, grilla)
-
 out.save(SAL / 'caja-y-fichas-A3.pdf', garbage=3, deflate=True)
-print(f'caja-y-fichas-A3.pdf · {out.page_count} páginas A3 · pliego 1: caja + fichas 1–7 · pliego 2: 8–16 · pliego 3: 17–24')
+print(f'caja-y-fichas-A3.pdf · {out.page_count} páginas A3 (frente y dorso) · caja + fichas 1–7')
