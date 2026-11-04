@@ -203,7 +203,7 @@ const css = `
 @media screen { body { background: #8f9499; } .hoja { margin: 8mm auto; } }
 `;
 
-const rotulo = (txt) => `<p class="hoja__rotulo" style="top:${OY + ALTO + B + 14}mm">${txt}</p>`;
+const rotulo = (txt) => `<p class="hoja__rotulo" style="top:${OY + ALTO + B + 14}mm"><b>Hoja A4 · 210 × 297 mm</b> · ${txt}</p>`;
 const datos = `Caja de las fichas · estuche con solapas · interior ${W} × ${H} × ${D} mm (para ${TOTAL} fichas de 74 × 105 mm) · troquel ${ANCHO} × ${ALTO} mm · sangrado 3 mm`;
 const hojas = [
   `<div class="hoja">${caja(true)}${rotulo(`<b>Hoja guía</b> · ${datos}<br><span class="leyenda"><i></i>corte</span><span class="leyenda"><i class="p"></i>pliegue</span>El troquel (magenta) no se imprime en la versión final: es la guía para cortar y doblar.<br>Imprimir al 100 % en cartulina de 300–350 g, de un solo lado. Pegar la solapa por dentro del frente.`)}</div>`,
