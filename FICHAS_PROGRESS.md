@@ -126,3 +126,6 @@ Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobado
 - Interior de la caja de 76 × 107 × 11 a 78 × 109 × 12 mm (2 mm de holgura por lado), para que entren las fichas cortadas a mano. Troquel 189 × 161 mm, sigue entrando en A4. Diseño sin cambios.
 - Dorso de las 24 fichas: «Darwin en la Argentina» de la cabecera pasa de Playfair 9,5 pt a Inter semibold 9 pt (la Playfair chica perdía los trazos finos).
 - Nuevo salida/caja-y-fichas-A3.pdf (py tools/pliego_caja.py, después de node build.mjs pdf y node caja.mjs): 1 pliego A3 doble faz sin marcas ni texto: caja a sangre + fichas 1–7 (a pedido, solo ese pliego). Frentes a sangre, dorsos con 3 mm de demasía y espejados (voltear por el lado largo). La caja es de una cara: su lugar en el dorso queda en blanco.
+
+## 16 nov. 2026 — Páginas del libro +2
+- El libro se renumeró +2 desde la 010 el 26 oct. (doble de respiro). Corregidas en las 24 fichas: «En el libro», fuente del cotejo y las «pág.» de las notas ED (61 cambios). Cotejo: todo coincide con el libro. PDFs de pantalla, imprenta, A3 doble faz, caja y pliego caja+fichas regenerados.
