@@ -72,5 +72,26 @@ for i in range(0, len(resto), 9):
     fr, do = par()
     poner(fr, do, resto[i:i + 9], grilla)
 
-out.save(SAL / 'caja-y-fichas-A3.pdf', garbage=3, deflate=True)
+# Último pliego: le sumamos una caja de repuesto (mismo armado que el pliego 1)
+fr.show_pdf_page(r(mx, y2, CW, CH), CAJA, 0, clip=r(COX, COY, CW, CH))
+
+# Imágenes a 300 ppp como máximo, para que el PDF quede por debajo de 10 MB
+# (las fotos de las fichas miden ~74 mm de ancho: 1000 px ≈ 340 ppp)
+import io
+from PIL import Image
+hechas = set()
+for pg in out:
+    for img in pg.get_images(full=True):
+        xref, smask, w, h = img[0], img[1], img[2], img[3]
+        if xref in hechas or smask or (max(w, h) <= 1000 and len(out.xref_stream_raw(xref)) < 150_000):
+            continue
+        hechas.add(xref)
+        pil = Image.open(io.BytesIO(out.extract_image(xref)['image'])).convert('RGB')
+        pil.thumbnail((1000, 1000), Image.LANCZOS)
+        buf = io.BytesIO()
+        pil.save(buf, 'JPEG', quality=78, optimize=True)
+        pg.replace_image(xref, stream=buf.getvalue())
+tmp = out.tobytes(garbage=4, deflate=True)
+out = pymupdf.open('pdf', tmp)  # segunda pasada: une las fotos repetidas
+out.save(SAL / 'caja-y-fichas-A3.pdf', garbage=4, deflate=True)
 print(f'caja-y-fichas-A3.pdf · {out.page_count} páginas A3 (frente y dorso) · caja + fichas 8–24')
