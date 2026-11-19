@@ -129,3 +129,5 @@ Resumen (12 oct. 2026): 24 de 24 fichas en revisión · sistema y lista aprobado
 
 ## 16 nov. 2026 — Páginas del libro +2
 - El libro se renumeró +2 desde la 010 el 26 oct. (doble de respiro). Corregidas en las 24 fichas: «En el libro», fuente del cotejo y las «pág.» de las notas ED (61 cambios). Cotejo: todo coincide con el libro. PDFs de pantalla, imprenta, A3 doble faz, caja y pliego caja+fichas regenerados.
+
+- 2026-11-19 · Pliego A3 de la caja (`tools/pliego_caja.py`): ahora caja a sangre + fichas 8–14 en el pliego 1, fichas 15–23 en el pliego 2 y la 24 sola en el pliego 3 (las 1–7 ya se imprimieron). 6 páginas A3 doble faz.
